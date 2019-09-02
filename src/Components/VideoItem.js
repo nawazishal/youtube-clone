@@ -1,18 +1,17 @@
 import React from "react";
+import VideoItem from "./VideoItem";
+import { Grid } from "@material-ui/core";
 
-import { Grid, Card, Typography } from "@material-ui/core";
+const VideoList = ({ videos, onVideoSelect }) => {
+  const listOfVideos = videos.map((video, id) => (
+    <VideoItem onVideoSelect={onVideoSelect} key={id} video={video} />
+  ));
 
-const VideoItem = ({ video, onVideoSelect }) => {
   return (
-    <Grid item s={12}>
-      <Card onClick={() => onVideoSelect(video)}>
-        <img alt="thumbnail" src={video.snippet.thumbnails.medium.url} />
-        <Typography variant="subtitle1">
-          <b>{video.snippet.title}</b>
-        </Typography>
-      </Card>
+    <Grid  spacing={10}  style={{padding: '30px'}}>
+      {listOfVideos}
     </Grid>
   );
 };
 
-export default VideoItem;
+export default VideoList;

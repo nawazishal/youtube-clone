@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
+import logo from "./youtube-logo.png";
+import { Navbar, Nav, NavItem } from "reactstrap";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -16,10 +17,6 @@ class SearchBar extends Component {
     const { onFormSubmit } = this.props;
 
     onFormSubmit(searchTerm);
-    this.setState({
-      searchTerm : ''
-    })
-
     event.preventDefault();
   };
 
@@ -27,15 +24,23 @@ class SearchBar extends Component {
     const { searchTerm } = this.state;
 
     return (
-      <div elevation={6} style={{ padding: "10px" }}>
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            fullWidth
-            label="Search..."
-            value={searchTerm}
-            onChange={this.handleChange}
-          />
-        </form>
+      <div>
+        <Navbar>
+          <Nav className="ml-auto" Navbar>
+            <NavItem>
+              <img src={logo} alt="logo" className="logo" />
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Search.."
+                  value={searchTerm}
+                  onChange={this.handleChange}
+                />
+              </form>
+            </NavItem>
+          </Nav>
+        </Navbar>
       </div>
     );
   }

@@ -1,12 +1,41 @@
-.body{
-    height: 100%;
-    width: 100%;
-    background-image: url('./Components/images.jpg')
+.container {
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
-.container{
-    align-items: center;
-    height: 100%;
-    width: 80%;
-    background: red;
-    background-image: url('./Components/images.jpg')
+.search-bar {
+  background: lightslategrey;
+}
+
+.delta {
+  background: whitesmoke;
+}
+.input {
+  margin-left: 100px;
+  left: 0px;
+  top: 2px;
+  width: 80%;
+  position: relative;
+  color: white;
+  background: black;
+}
+.logo {
+  left: 12px;
+  position: absolute;
+}
+.btn {
+  margin-left: 600px;
+  text-align: center;
+}
+.list {
+  padding: 20px;
+}
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 15px;
+}
+th {
+  width: 100%;
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import SearchBar from "./Components/SearchBar";
 import VideoDetails from "./Components/VideoDetails";
 import youtube from "./Components/Youtube";
 import VideoList from "./Components/VideoList";
+import { Table } from "reactstrap";
 
+import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -19,8 +20,8 @@ class App extends React.Component {
     const response = await youtube.get("search", {
       params: {
         part: "snippet",
-        maxResults: 10,
-        key: "api key",
+        maxResults: 5,
+        key: "AIzaSyBVT733wmdZpX-Ah5hmddJulffuvOfOiE4",
         q: searchTerm
       }
     });
@@ -33,28 +34,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container" >
-        <Grid style={{ justifyContent: "center" }} container spacing={10}>
-          <Grid item xs={11}>
-            <Grid container spacing={10}>
-              <Grid item xs={12}>
+      <div className="container">
+        <Table>
+          <thead width="100%">
+            <tr>
+              <th>
+                {" "}
                 <SearchBar onFormSubmit={this.handleSubmit} />
-              </Grid>
-              <Grid item xs={8}>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="th">
+                {" "}
                 <VideoDetails video={this.state.selectedVideo} />
-              </Grid>
-              <Grid item xs={4}>
+              </td>
+              <td>
+                {" "}
                 <VideoList
                   videos={this.state.videos}
                   onVideoSelect={this.onVideoSelect}
                 />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   }
 }
 
 export default App;
+
